@@ -1308,7 +1308,9 @@ void setup() {
  */
 void loop() {
   do {
-    SERIAL_ECHO_MSG("Bismillah");
+    // SERIAL_ECHO_MSG("Bismillah");
+    SERIAL_ECHOLNPAIR("cmd");
+    delay(1000);
 
     idle();
 
