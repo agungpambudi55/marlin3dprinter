@@ -263,6 +263,11 @@ bool wait_for_heatup = true;
   I2CPositionEncodersMgr I2CPEM;
 #endif
 
+//### mysourcecode
+unsigned char dataRX[4], dataRX_sum = 4;
+int headerFind = 0, indexData = 0;
+//### mysourcecode
+
 /**
  * ***************************************************************************
  * ******************************** FUNCTIONS ********************************
@@ -938,7 +943,6 @@ inline void tmc_standby_setup() {
  *    • Max7219
  */
 void setup() {
-
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable
 
   #if ENABLED(MARLIN_DEV_MODE)
@@ -1291,6 +1295,10 @@ void setup() {
   marlin_state = MF_RUNNING;
 
   SETUP_LOG("setup() completed.");
+
+  //### mysourcecode
+  MYSERIAL1.begin(57600);
+  //### mysourcecode
 }
 
 /**
@@ -1306,25 +1314,46 @@ void setup() {
  *    card, host, or by direct injection. The queue will continue to fill
  *    as long as idle() or manage_inactivity() are being called.
  */
+
+//### mysourcecode
 void loop() {
-  do {
-    // SERIAL_ECHO_MSG("Bismillah");
-    SERIAL_ECHOLNPAIR("cmd");
-    delay(1000);
+  idle();
 
-    idle();
-
-    #if ENABLED(SDSUPPORT)
-      card.checkautostart();
-      if (card.flag.abort_sd_printing) abortSDPrinting();
-      if (marlin_state == MF_SD_COMPLETE) finishSDPrinting();
-    #endif
-
-    queue.advance();
-
-    endstops.event_handler();
-
-    TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
-
-  } while (ENABLED(__AVR__)); // Loop forever on slower (AVR) boards
+  while(MYSERIAL1.available()){
+    char inChar = (char)MYSERIAL1.read();
+  
+    if(headerFind == 0 && inChar == 'F'){ 
+      headerFind = 1;
+      MYSERIAL1.print(inChar);
+      MYSERIAL1.println(" < first header"); 
+    }else if(headerFind == 1 && inChar == 'F'){
+      headerFind = 2; 
+      MYSERIAL1.print(inChar);
+      MYSERIAL1.println(" < second header");
+    }else if(headerFind == 2){
+      dataRX[indexData] = (int)inChar;
+      indexData++;
+      if(indexData >= dataRX_sum){ headerFind = indexData = 0; }
+    }else { headerFind = indexData = 0; }
+  }
 }
+//### mysourcecode
+
+// void loop() {
+//   do {
+//     idle();
+
+//     #if ENABLED(SDSUPPORT)
+//       card.checkautostart();
+//       if (card.flag.abort_sd_printing) abortSDPrinting();
+//       if (marlin_state == MF_SD_COMPLETE) finishSDPrinting();
+//     #endif
+
+//     queue.advance();
+
+//     endstops.event_handler();
+
+//     TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
+
+//   } while (ENABLED(__AVR__)); // Loop forever on slower (AVR) boards
+// }
