@@ -1,9 +1,9 @@
 # Risearch Documentation
 ## Contributor 
-* agungpambudi55 <agung.pambudi5595@gmail.com>
+agungpambudi55 <agung.pambudi5595@gmail.com>
 
 ## The Third Week of November 2020
-* Secondary Serial
+### Secondary Serial
 Edit file Configuration.h on line 112 (MARLIN-2.0.X/Marlin/Configuration.h)
 ```
 #define SERIAL_PORT_2 <serial-port>
@@ -24,7 +24,7 @@ if (MYSERIAL1.available() > 0) {
 }
 ```
 
-* Create Communication Read and Write to Other Boards
+### Create Communication Read and Write to Other Boards
 ```
 while(MYSERIAL1.available()){
   char inChar = (char)MYSERIAL1.read();
@@ -46,7 +46,7 @@ while(MYSERIAL1.available()){
 ```
 
 ## The Second Week of November 2020
-* Directory File
+### Directory File
 ```
 MARLIN-2.0.X
 |--Marlin
@@ -73,7 +73,7 @@ MARLIN-2.0.X
 |--platformio.ini (platformio configuration file)
 ```
 
-* Build Setup
+### Build Setup
 Edit file Configuration.h on line 129 (MARLIN-2.0.X/Marlin/Configuration.h) and choose the name from boards.h (MARLIN-2.0.X/Marlin/src/core/boards.h) that matches your setup
 ```
 #ifndef MOTHERBOARD
@@ -86,7 +86,7 @@ Edit file platformio.ini on line 21 (MARLIN-2.0.X/platformio.ini)
 default_envs = <name-environment>
 ```
 
-* Test Print
+### Test Print
 MarlinCore.cpp
 ```
 void loop() {
