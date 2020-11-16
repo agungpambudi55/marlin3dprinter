@@ -24,8 +24,7 @@ if (MYSERIAL1.available() > 0) {
 }
 ```
 
-* Create Communication
-Read and write to other boards
+* Create Communication Read and Write to Other Boards
 ```
 while(MYSERIAL1.available()){
   char inChar = (char)MYSERIAL1.read();
