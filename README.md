@@ -26,6 +26,9 @@ if (MYSERIAL1.available() > 0) {
 
 ### Create Communication Read and Write to Other Boards
 ```
+unsigned char dataRX[4], dataRX_sum = 4;
+int headerFind = 0, indexData = 0;
+
 while(MYSERIAL1.available()){
   char inChar = (char)MYSERIAL1.read();
 
