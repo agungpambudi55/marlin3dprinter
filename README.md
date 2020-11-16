@@ -3,6 +3,7 @@
 ## Fri, 13 Nov 2020
 * Directory File
 ```
+MARLIN-2.0.X
 |--Marlin
 |  |--lib
 |  |  |--readme.txt
@@ -25,14 +26,18 @@
 |  |--Configuration.h (general settings file)
 |  |--...
 |--platformio.ini (platformio configuration file)
-
 ```
 
 * Build Setup
-File Configuration.h (Marlin/Configuration.h)
+Edit file Configuration.h on line 129 (MARLIN-2.0.X/Marlin/Configuration.h)
+Choose the name from boards.h (MARLIN-2.0.X/Marlin/src/core/boards.h) that matches your setup
 ```
-// Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
   #define MOTHERBOARD <name-board>
 #endif
+```
+
+Edit file platformio.ini on line 21 (MARLIN-2.0.X/platformio.ini)
+```
+default_envs = <name-environment>
 ```
