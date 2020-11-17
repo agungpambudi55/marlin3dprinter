@@ -263,11 +263,6 @@ bool wait_for_heatup = true;
   I2CPositionEncodersMgr I2CPEM;
 #endif
 
-//### mysourcecode
-unsigned char dataRX[4], dataRX_sum = 4;
-int headerFind = 0, indexData = 0;
-//### mysourcecode
-
 /**
  * ***************************************************************************
  * ******************************** FUNCTIONS ********************************
@@ -1316,11 +1311,13 @@ void setup() {
  */
 
 //### mysourcecode
-void loop() {
-  idle();
+unsigned char dataRX[4], dataRX_sum = 4;
+int headerFind = 0, indexData = 0;
 
+void commOtherBoards() {
   while(MYSERIAL1.available()){
     char inChar = (char)MYSERIAL1.read();
+    SERIAL_ECHOLN(inChar);
   
     if(headerFind == 0 && inChar == 'F'){ 
       headerFind = 1;
@@ -1333,27 +1330,33 @@ void loop() {
     }else if(headerFind == 2){
       dataRX[indexData] = (int)inChar;
       indexData++;
-      if(indexData >= dataRX_sum){ headerFind = indexData = 0; }
+      if(indexData >= dataRX_sum){ 
+        headerFind = indexData = 0;
+      }
     }else { headerFind = indexData = 0; }
   }
 }
 //### mysourcecode
 
-// void loop() {
-//   do {
-//     idle();
+void loop() {
+  do {
+    idle();
 
-//     #if ENABLED(SDSUPPORT)
-//       card.checkautostart();
-//       if (card.flag.abort_sd_printing) abortSDPrinting();
-//       if (marlin_state == MF_SD_COMPLETE) finishSDPrinting();
-//     #endif
+    //### mysourcecode
+    commOtherBoards();
+    //### mysourcecode
+    
+    #if ENABLED(SDSUPPORT)
+      card.checkautostart();
+      if (card.flag.abort_sd_printing) abortSDPrinting();
+      if (marlin_state == MF_SD_COMPLETE) finishSDPrinting();
+    #endif
 
-//     queue.advance();
+    queue.advance();
 
-//     endstops.event_handler();
+    endstops.event_handler();
 
-//     TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
+    TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
 
-//   } while (ENABLED(__AVR__)); // Loop forever on slower (AVR) boards
-// }
+  } while (ENABLED(__AVR__)); // Loop forever on slower (AVR) boards
+}
