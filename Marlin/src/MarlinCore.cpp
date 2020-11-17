@@ -1325,7 +1325,7 @@ void loop() {
     if(headerFind == 0 && inChar == 'F'){ 
       headerFind = 1;
       MYSERIAL1.print(inChar);
-      MYSERIAL1.println(" < first header"); 
+      MYSERIAL1.println(" < first header");
     }else if(headerFind == 1 && inChar == 'F'){
       headerFind = 2; 
       MYSERIAL1.print(inChar);
