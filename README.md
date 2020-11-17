@@ -47,6 +47,7 @@ while(MYSERIAL1.available()){
   }else { headerFind = indexData = 0; }
 }
 ```
+![Gambar][gambar-url]
 
 ## The Second Week of November 2020
 ### Directory File
@@ -98,3 +99,6 @@ void loop() {
   delay(1000);
 }
 ```
+
+<!-- MARKDOWN LINKS -->
+[gambar-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
