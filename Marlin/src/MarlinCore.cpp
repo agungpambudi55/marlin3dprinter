@@ -1311,28 +1311,56 @@ void setup() {
  */
 
 //### mysourcecode
-unsigned char dataRX[4], dataRX_sum = 4;
+unsigned int dataSensor1, dataSensor2, dataSensor3, dataSensor4, dataSensor5;
+unsigned char dataRX[10], dataRXsum = 10;
 int headerFind = 0, indexData = 0;
 
-void commOtherBoards() {
+void processDataSensor(){
+  dataRX[0] = dataRX[0] & 0x00ff;
+  dataRX[1] = dataRX[1] << 8;
+  dataRX[2] = dataRX[2] & 0x00ff;
+  dataRX[3] = dataRX[3] << 8;
+  dataRX[4] = dataRX[4] & 0x00ff;
+  dataRX[5] = dataRX[5] << 8;
+  dataRX[6] = dataRX[6] & 0x00ff;
+  dataRX[7] = dataRX[7] << 8;
+  dataRX[8] = dataRX[8] & 0x00ff;
+  dataRX[9] = dataRX[9] << 8;
+
+  dataSensor1 = dataRX[0] | dataRX[1];
+  dataSensor2 = dataRX[2] | dataRX[3];
+  dataSensor3 = dataRX[4] | dataRX[5];
+  dataSensor4 = dataRX[6] | dataRX[7];
+  dataSensor5 = dataRX[8] | dataRX[9];
+
+  SERIAL_ECHO("dataSensor1 ");
+  SERIAL_ECHOLN(dataSensor1);
+
+  SERIAL_ECHO("dataSensor2 ");
+  SERIAL_ECHOLN(dataSensor2);
+
+  SERIAL_ECHO("dataSensor3 ");
+  SERIAL_ECHOLN(dataSensor3);
+
+  SERIAL_ECHO("dataSensor4 ");
+  SERIAL_ECHOLN(dataSensor4);
+
+  SERIAL_ECHO("dataSensor5 ");
+  SERIAL_ECHOLN(dataSensor5);
+}
+
+void receiveDataSensor() {
   while(MYSERIAL1.available()){
     char inChar = (char)MYSERIAL1.read();
     SERIAL_ECHOLN(inChar);
+    MYSERIAL1.println(inChar);
   
-    if(headerFind == 0 && inChar == 'F'){ 
-      headerFind = 1;
-      MYSERIAL1.print(inChar);
-      MYSERIAL1.println(" < first header");
-    }else if(headerFind == 1 && inChar == 'F'){
-      headerFind = 2; 
-      MYSERIAL1.print(inChar);
-      MYSERIAL1.println(" < second header");
-    }else if(headerFind == 2){
+    if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
+    else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
+    else if(headerFind == 2){      
       dataRX[indexData] = (int)inChar;
       indexData++;
-      if(indexData >= dataRX_sum){ 
-        headerFind = indexData = 0;
-      }
+      if(indexData >= dataRXsum){ headerFind = indexData = 0; }
     }else { headerFind = indexData = 0; }
   }
 }
@@ -1343,7 +1371,8 @@ void loop() {
     idle();
 
     //### mysourcecode
-    commOtherBoards();
+    receiveDataSensor();
+    processDataSensor();
     //### mysourcecode
     
     #if ENABLED(SDSUPPORT)
