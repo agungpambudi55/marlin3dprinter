@@ -1298,7 +1298,7 @@ void setup() {
   SETUP_LOG("setup() completed.");
 
   //### mysourcecode
-  MYSERIAL2.begin(57600);  
+  MYSERIAL2.begin(57600);
   //### mysourcecode
 }
 

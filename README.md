@@ -47,6 +47,13 @@ MarlinSerial.h (Marlin-2.0.x\Marlin\src\HAL\AVR\MarlinSerial.h) on line 202
 #endif
 ```
 
+MarlinCore.cpp (Marlin-2.0.x\Marlin\src\MarlinCore.cpp) on setup function
+```
+MYSERIAL2.begin(57600);
+```
+
+![Gambar][gambar-3-url]
+
 ## The Third Week of November 2020
 ### Secondary Serial
 Edit file Configuration.h on line 112 (Marlin-2.0.X/Marlin/Configuration.h)
@@ -240,3 +247,4 @@ void loop() {
 <!-- MARKDOWN LINKS -->
 [gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
 [gambar-2-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/read%20write%20parsing%20packet.png
+[gambar-3-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/new%20serial%20comm%20port.png
