@@ -1,4 +1,10 @@
 /**
+ * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
+ * Last Modified : 23 Nov 2020
+ * Desc : Adding and editing source code to the Marlin Firmware
+*/
+
+/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -1292,7 +1298,7 @@ void setup() {
   SETUP_LOG("setup() completed.");
 
   //### mysourcecode
-  MYSERIAL1.begin(57600);
+  MYSERIAL2.begin(57600);  
   //### mysourcecode
 }
 
@@ -1333,27 +1339,27 @@ void processDataSensor(){
   dataSensor4 = dataRX[6] | dataRX[7];
   dataSensor5 = dataRX[8] | dataRX[9];
 
-  SERIAL_ECHO("dataSensor1 ");
-  SERIAL_ECHOLN(dataSensor1);
+  // SERIAL_ECHO("dataSensor1 ");
+  // SERIAL_ECHOLN(dataSensor1);
 
-  SERIAL_ECHO("dataSensor2 ");
-  SERIAL_ECHOLN(dataSensor2);
+  // SERIAL_ECHO("dataSensor2 ");
+  // SERIAL_ECHOLN(dataSensor2);
 
-  SERIAL_ECHO("dataSensor3 ");
-  SERIAL_ECHOLN(dataSensor3);
+  // SERIAL_ECHO("dataSensor3 ");
+  // SERIAL_ECHOLN(dataSensor3);
 
-  SERIAL_ECHO("dataSensor4 ");
-  SERIAL_ECHOLN(dataSensor4);
+  // SERIAL_ECHO("dataSensor4 ");
+  // SERIAL_ECHOLN(dataSensor4);
 
-  SERIAL_ECHO("dataSensor5 ");
-  SERIAL_ECHOLN(dataSensor5);
+  // SERIAL_ECHO("dataSensor5 ");
+  // SERIAL_ECHOLN(dataSensor5);
 }
 
 void receiveDataSensor() {
-  while(MYSERIAL1.available()){
-    char inChar = (char)MYSERIAL1.read();
+  while(MYSERIAL2.available()){
+    char inChar = (char)MYSERIAL2.read();
     SERIAL_ECHOLN(inChar);
-    MYSERIAL1.println(inChar);
+    MYSERIAL2.println(inChar);
   
     if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
     else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
@@ -1371,8 +1377,11 @@ void loop() {
     idle();
 
     //### mysourcecode
-    receiveDataSensor();
-    processDataSensor();
+    // receiveDataSensor();
+    // processDataSensor();
+
+    MYSERIAL2.println("Bismillahirrahmanirrahim new serial comm port");
+    DELAY_US(1000);
     //### mysourcecode
     
     #if ENABLED(SDSUPPORT)

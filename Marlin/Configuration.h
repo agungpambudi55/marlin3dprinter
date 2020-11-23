@@ -1,4 +1,10 @@
 /**
+ * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
+ * Last Modified : 23 Nov 2020
+ * Desc : Adding and editing source code to the Marlin Firmware
+*/
+
+/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -19,6 +25,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
+
 #pragma once
 
 /**
@@ -110,6 +117,10 @@
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
 #define SERIAL_PORT_2 1
+
+//### mysourcecode
+#define SERIAL_PORT_3 2
+//### mysourcecode
 
 /**
  * This setting determines the communication speed of the printer.

@@ -1,10 +1,55 @@
 # Risearch Documentation
 ## Contributor 
-agungpambudi55 <agung.pambudi5595@gmail.com>
+Agung Pambudi - agungpambudi55 <agung.pambudi5595@gmail.com>
+
+## The Four Week of November 2020
+Create new serial port for communication with the host
+
+Configuration.h (Marlin-2.0.x\Marlin\Configuration.h) on line 115
+```
+#define SERIAL_PORT_3 2
+```
+
+HAL.h (Marlin-2.0.x\Marlin\src\HAL\AVR\HAL.h) on line 
+```
+#ifdef SERIAL_PORT_3
+  #if !WITHIN(SERIAL_PORT_3, -1, 3)
+    #error "SERIAL_PORT_3 must be from -1 to 3. Please update your configuration."
+  #endif
+  #define MYSERIAL2 customizedSerial3
+#endif
+```
+
+MarlinSerial.cpp (Marlin-2.0.x\Marlin\src\HAL\AVR\MarlinSerial.cpp) on line 749
+```
+#ifdef SERIAL_PORT_3
+  // Hookup ISR handlers
+  ISR(SERIAL_REGNAME(USART, SERIAL_PORT_3, _RX_vect)) {
+    MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>>::store_rxd_char();
+  }
+
+  ISR(SERIAL_REGNAME(USART, SERIAL_PORT_3, _UDRE_vect)) {
+    MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>>::_tx_udr_empty_irq();
+  }
+
+  // Preinstantiate
+  template class MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>>;
+
+  // Instantiate
+  MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>> customizedSerial3;
+#endif
+```
+
+MarlinSerial.h (Marlin-2.0.x\Marlin\src\HAL\AVR\MarlinSerial.h) on line 202
+```
+#ifdef SERIAL_PORT_3
+  extern MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>> customizedSerial3;
+#endif
+```
 
 ## The Third Week of November 2020
 ### Secondary Serial
-Edit file Configuration.h on line 112 (MARLIN-2.0.X/Marlin/Configuration.h)
+Edit file Configuration.h on line 112 (Marlin-2.0.X/Marlin/Configuration.h)
 ```
 #define SERIAL_PORT_2 <serial-port>
 ```
@@ -47,18 +92,110 @@ while(MYSERIAL1.available()){
   }else { headerFind = indexData = 0; }
 }
 ```
-![Gambar][gambar-url]
+
+![Gambar][gambar-1-url]
+
+Source code for Marlin
+```
+//### mysourcecode
+unsigned int dataSensor1, dataSensor2, dataSensor3, dataSensor4, dataSensor5;
+unsigned char dataRX[10], dataRXsum = 10;
+int headerFind = 0, indexData = 0;
+
+void processDataSensor(){
+  dataRX[0] = dataRX[0] & 0x00ff;
+  dataRX[1] = dataRX[1] << 8;
+  dataRX[2] = dataRX[2] & 0x00ff;
+  dataRX[3] = dataRX[3] << 8;
+  dataRX[4] = dataRX[4] & 0x00ff;
+  dataRX[5] = dataRX[5] << 8;
+  dataRX[6] = dataRX[6] & 0x00ff;
+  dataRX[7] = dataRX[7] << 8;
+  dataRX[8] = dataRX[8] & 0x00ff;
+  dataRX[9] = dataRX[9] << 8;
+
+  dataSensor1 = dataRX[0] | dataRX[1];
+  dataSensor2 = dataRX[2] | dataRX[3];
+  dataSensor3 = dataRX[4] | dataRX[5];
+  dataSensor4 = dataRX[6] | dataRX[7];
+  dataSensor5 = dataRX[8] | dataRX[9];
+
+  SERIAL_ECHO("dataSensor1 ");
+  SERIAL_ECHOLN(dataSensor1);
+
+  SERIAL_ECHO("dataSensor2 ");
+  SERIAL_ECHOLN(dataSensor2);
+
+  SERIAL_ECHO("dataSensor3 ");
+  SERIAL_ECHOLN(dataSensor3);
+
+  SERIAL_ECHO("dataSensor4 ");
+  SERIAL_ECHOLN(dataSensor4);
+
+  SERIAL_ECHO("dataSensor5 ");
+  SERIAL_ECHOLN(dataSensor5);
+}
+
+void receiveDataSensor() {
+  while(MYSERIAL1.available()){
+    char inChar = (char)MYSERIAL1.read();
+    SERIAL_ECHOLN(inChar);
+    MYSERIAL1.println(inChar);
+  
+    if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
+    else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
+    else if(headerFind == 2){      
+      dataRX[indexData] = (int)inChar;
+      indexData++;
+      if(indexData >= dataRXsum){ headerFind = indexData = 0; }
+    }else { headerFind = indexData = 0; }
+  }
+}
+//### mysourcecode
+```
+
+Source code format tranfer data for sensor extruder
+```
+unsigned char dataTX[10];
+unsigned int dataTXSum = 10;
+
+void transmitDataSensor(int dataSensor1, int dataSensor2, int dataSensor3, int dataSensor4, int dataSensor5) {
+  dataTX[0] = dataSensor1 & 0x00ff;
+  dataTX[1] = dataSensor1 >> 8;
+  dataTX[2] = dataSensor2 & 0x00ff;
+  dataTX[3] = dataSensor2 >> 8;
+  dataTX[4] = dataSensor3 & 0x00ff;
+  dataTX[5] = dataSensor3 >> 8;
+  dataTX[6] = dataSensor4 & 0x00ff;
+  dataTX[7] = dataSensor4 >> 8;
+  dataTX[8] = dataSensor5 & 0x00ff;
+  dataTX[9] = dataSensor5 >> 8;
+
+  Serial.print("FF");
+  Serial.write((byte*)dataTX, dataTXSum);
+}
+
+void setup() {
+  Serial.begin(57600);
+}
+
+void loop() {
+  transmitDataSensor(51,61,95,96,15);
+  delay(100);
+}
+```
+![Gambar][gambar-2-url]
 
 ## The Second Week of November 2020
 ### Directory File
 ```
-MARLIN-2.0.X
+Marlin-2.0.X
 |--Marlin
 |  |--lib
 |  |  |--readme.txt
 |  |--src
 |  |  |--core
-|  |  |  |--boards.h
+|  |  |  |--boards.h (name of boards)
 |  |  |  |--...
 |  |  |--gcode
 |  |  |--inc
@@ -78,14 +215,14 @@ MARLIN-2.0.X
 ```
 
 ### Build Setup
-Edit file Configuration.h on line 129 (MARLIN-2.0.X/Marlin/Configuration.h) and choose the name from boards.h (MARLIN-2.0.X/Marlin/src/core/boards.h) that matches your setup
+Edit file Configuration.h on line 129 (Marlin-2.0.X/Marlin/Configuration.h) and choose the name from boards.h (Marlin-2.0.X/Marlin/src/core/boards.h) that matches your setup
 ```
 #ifndef MOTHERBOARD
   #define MOTHERBOARD <name-board>
 #endif
 ```
 
-Edit file platformio.ini on line 21 (MARLIN-2.0.X/platformio.ini)
+Edit file platformio.ini on line 21 (Marlin-2.0.X/platformio.ini)
 ```
 default_envs = <name-environment>
 ```
@@ -101,4 +238,5 @@ void loop() {
 ```
 
 <!-- MARKDOWN LINKS -->
-[gambar-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
+[gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
+[gambar-2-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/read%20write%20parsing%20packet.png
