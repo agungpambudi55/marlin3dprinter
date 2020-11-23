@@ -1377,8 +1377,8 @@ void loop() {
     idle();
 
     //### mysourcecode
-    // receiveDataSensor();
-    // processDataSensor();
+    receiveDataSensor();
+    processDataSensor();
 
     MYSERIAL2.println("Bismillahirrahmanirrahim new serial comm port");
     DELAY_US(1000);
