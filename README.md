@@ -5,18 +5,36 @@ Agung Pambudi - agungpambudi55 <agung.pambudi5595@gmail.com>
 ## The Four Week of November 2020
 Create new serial port for communication with the host
 
+Uncomment on line 1325 in file Marlin-2.0.x\platformio.ini
+```
+upload_port   = marlinesp.local
+```
+
 Configuration.h (Marlin-2.0.x\Marlin\Configuration.h) on line 115
 ```
 #define SERIAL_PORT_3 2
 ```
 
-HAL.h (Marlin-2.0.x\Marlin\src\HAL\AVR\HAL.h) on line 
+HAL.h (Marlin-2.0.x\Marlin\src\HAL\AVR\HAL.h) on line 106
 ```
 #ifdef SERIAL_PORT_3
   #if !WITHIN(SERIAL_PORT_3, -1, 3)
     #error "SERIAL_PORT_3 must be from -1 to 3. Please update your configuration."
   #endif
   #define MYSERIAL2 customizedSerial3
+#endif
+```
+
+HAL.h (Marlin-2.0.x\Marlin\src\HAL\LPC1768\HAL.h) on line 89
+```
+#ifdef SERIAL_PORT_3
+  #if SERIAL_PORT_3 == -1
+    #define MYSERIAL2 UsbSerial
+  #elif WITHIN(SERIAL_PORT_3, 0, 3)
+    #define MYSERIAL2 MSERIAL(SERIAL_PORT_3)
+  #else
+    #error "SERIAL_PORT_3 must be from -1 to 3. Please update your configuration."
+  #endif
 #endif
 ```
 
