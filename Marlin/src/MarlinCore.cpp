@@ -944,6 +944,10 @@ inline void tmc_standby_setup() {
  *    • Max7219
  */
 void setup() {
+  //### mysourcecode
+  MYSERIAL1.begin(57600);
+  //### mysourcecode
+  
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable
 
   #if ENABLED(MARLIN_DEV_MODE)
@@ -1296,10 +1300,6 @@ void setup() {
   marlin_state = MF_RUNNING;
 
   SETUP_LOG("setup() completed.");
-
-  //### mysourcecode
-  MYSERIAL2.begin(57600);
-  //### mysourcecode
 }
 
 /**
@@ -1317,59 +1317,59 @@ void setup() {
  */
 
 //### mysourcecode
-unsigned int dataSensor1, dataSensor2, dataSensor3, dataSensor4, dataSensor5;
-unsigned char dataRX[10], dataRXsum = 10;
-int headerFind = 0, indexData = 0;
+// unsigned int dataSensor1, dataSensor2, dataSensor3, dataSensor4, dataSensor5;
+// unsigned char dataRX[10], dataRXsum = 10;
+// int headerFind = 0, indexData = 0;
 
-void processDataSensor(){
-  dataRX[0] = dataRX[0] & 0x00ff;
-  dataRX[1] = dataRX[1] << 8;
-  dataRX[2] = dataRX[2] & 0x00ff;
-  dataRX[3] = dataRX[3] << 8;
-  dataRX[4] = dataRX[4] & 0x00ff;
-  dataRX[5] = dataRX[5] << 8;
-  dataRX[6] = dataRX[6] & 0x00ff;
-  dataRX[7] = dataRX[7] << 8;
-  dataRX[8] = dataRX[8] & 0x00ff;
-  dataRX[9] = dataRX[9] << 8;
+// void processDataSensor(){
+//   dataRX[0] = dataRX[0] & 0x00ff;
+//   dataRX[1] = dataRX[1] << 8;
+//   dataRX[2] = dataRX[2] & 0x00ff;
+//   dataRX[3] = dataRX[3] << 8;
+//   dataRX[4] = dataRX[4] & 0x00ff;
+//   dataRX[5] = dataRX[5] << 8;
+//   dataRX[6] = dataRX[6] & 0x00ff;
+//   dataRX[7] = dataRX[7] << 8;
+//   dataRX[8] = dataRX[8] & 0x00ff;
+//   dataRX[9] = dataRX[9] << 8;
 
-  dataSensor1 = dataRX[0] | dataRX[1];
-  dataSensor2 = dataRX[2] | dataRX[3];
-  dataSensor3 = dataRX[4] | dataRX[5];
-  dataSensor4 = dataRX[6] | dataRX[7];
-  dataSensor5 = dataRX[8] | dataRX[9];
+//   dataSensor1 = dataRX[0] | dataRX[1];
+//   dataSensor2 = dataRX[2] | dataRX[3];
+//   dataSensor3 = dataRX[4] | dataRX[5];
+//   dataSensor4 = dataRX[6] | dataRX[7];
+//   dataSensor5 = dataRX[8] | dataRX[9];
 
-  // SERIAL_ECHO("dataSensor1 ");
-  // SERIAL_ECHOLN(dataSensor1);
+//   SERIAL_ECHO("dataSensor1 ");
+//   SERIAL_ECHOLN(dataSensor1);
 
-  // SERIAL_ECHO("dataSensor2 ");
-  // SERIAL_ECHOLN(dataSensor2);
+//   SERIAL_ECHO("dataSensor2 ");
+//   SERIAL_ECHOLN(dataSensor2);
 
-  // SERIAL_ECHO("dataSensor3 ");
-  // SERIAL_ECHOLN(dataSensor3);
+//   SERIAL_ECHO("dataSensor3 ");
+//   SERIAL_ECHOLN(dataSensor3);
 
-  // SERIAL_ECHO("dataSensor4 ");
-  // SERIAL_ECHOLN(dataSensor4);
+//   SERIAL_ECHO("dataSensor4 ");
+//   SERIAL_ECHOLN(dataSensor4);
 
-  // SERIAL_ECHO("dataSensor5 ");
-  // SERIAL_ECHOLN(dataSensor5);
-}
+//   SERIAL_ECHO("dataSensor5 ");
+//   SERIAL_ECHOLN(dataSensor5);
+// }
 
-void receiveDataSensor() {
-  while(MYSERIAL2.available()){
-    char inChar = (char)MYSERIAL2.read();
-    SERIAL_ECHOLN(inChar);
-    MYSERIAL2.println(inChar);
+// void receiveDataSensor() {
+//   while(MYSERIAL2.available()){
+//     char inChar = (char)MYSERIAL2.read();
+//     SERIAL_ECHOLN(inChar);
+//     MYSERIAL2.println(inChar);
   
-    if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
-    else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
-    else if(headerFind == 2){      
-      dataRX[indexData] = (int)inChar;
-      indexData++;
-      if(indexData >= dataRXsum){ headerFind = indexData = 0; }
-    }else { headerFind = indexData = 0; }
-  }
-}
+//     if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
+//     else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
+//     else if(headerFind == 2){      
+//       dataRX[indexData] = (int)inChar;
+//       indexData++;
+//       if(indexData >= dataRXsum){ headerFind = indexData = 0; }
+//     }else { headerFind = indexData = 0; }
+//   }
+// }
 //### mysourcecode
 
 void loop() {
@@ -1377,11 +1377,11 @@ void loop() {
     idle();
 
     //### mysourcecode
-    receiveDataSensor();
-    processDataSensor();
+    // receiveDataSensor();
+    // processDataSensor();
 
-    MYSERIAL2.println("Bismillahirrahmanirrahim new serial comm port");
-    DELAY_US(1000);
+    // MYSERIAL2.println("Bismillahirrahmanirrahim new serial comm port");
+    // DELAY_US(1000);
     //### mysourcecode
     
     #if ENABLED(SDSUPPORT)

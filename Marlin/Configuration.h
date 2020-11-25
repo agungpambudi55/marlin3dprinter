@@ -119,7 +119,7 @@
 #define SERIAL_PORT_2 1
 
 //### mysourcecode
-#define SERIAL_PORT_3 2
+// #define SERIAL_PORT_3 2
 //### mysourcecode
 
 /**
@@ -139,6 +139,7 @@
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_BTT_SKR_V1_4_TURBO
+  // #define MOTHERBOARD BOARD_RAMPS_13_EFB
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
