@@ -3,8 +3,25 @@
 Agung Pambudi - agungpambudi55 <agung.pambudi5595@gmail.com>
 
 ## The Four Week of November 2020
-Create new serial port for communication with the host
+Setup LCD on line 1440 (Marlin-2.0.x\Marlin\Configuration_adv.h)
+```
+#define LCD_SERIAL_PORT 3
+#define LCD_BAUDRATE 115200
+```
 
+Machine name on line 146 (Marlin-2.0.x\Marlin\Configuration.h)
+```
+#define CUSTOM_MACHINE_NAME "WIDYA 3DCP"
+```
+
+Machine name on line 75 (Marlin-2.0.x\Marlin\src\inc\Version.h)
+```
+#ifndef MACHINE_NAME
+  #define MACHINE_NAME "WIDYA 3DCP"
+#endif
+```
+
+Create new serial port for communication with the host
 ### Board mega2560
 Configuration.h (Marlin-2.0.x\Marlin\Configuration.h) on line 115
 ```
@@ -258,6 +275,13 @@ void loop() {
   delay(1000);
 }
 ```
+
+### Link
+https://marlinfw.org
+https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3
+https://3dwork.io/en/complete-guide-skr-v1-4-and-tmc2209/
+https://github.com/bigtreetech/BIGTREETECH-TouchScreenHardware
+https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware
 
 <!-- MARKDOWN LINKS -->
 [gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png

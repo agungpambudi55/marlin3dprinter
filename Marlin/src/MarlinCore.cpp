@@ -945,7 +945,7 @@ inline void tmc_standby_setup() {
  */
 void setup() {
   //### mysourcecode
-  MYSERIAL1.begin(57600);
+  // MYSERIAL1.begin(115200);
   //### mysourcecode
   
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable
@@ -1339,35 +1339,39 @@ void setup() {
 //   dataSensor4 = dataRX[6] | dataRX[7];
 //   dataSensor5 = dataRX[8] | dataRX[9];
 
-//   SERIAL_ECHO("dataSensor1 ");
-//   SERIAL_ECHOLN(dataSensor1);
+//   if (dataSensor1 != 0 && dataSensor2 != 0 && dataSensor3 != 0 && dataSensor4 != 0 && dataSensor5 != 0) {
+//     SERIAL_ECHO("dataSensor1 ");
+//     SERIAL_ECHOLN(dataSensor1);
 
-//   SERIAL_ECHO("dataSensor2 ");
-//   SERIAL_ECHOLN(dataSensor2);
+//     SERIAL_ECHO("dataSensor2 ");
+//     SERIAL_ECHOLN(dataSensor2);
 
-//   SERIAL_ECHO("dataSensor3 ");
-//   SERIAL_ECHOLN(dataSensor3);
+//     SERIAL_ECHO("dataSensor3 ");
+//     SERIAL_ECHOLN(dataSensor3);
 
-//   SERIAL_ECHO("dataSensor4 ");
-//   SERIAL_ECHOLN(dataSensor4);
+//     SERIAL_ECHO("dataSensor4 ");
+//     SERIAL_ECHOLN(dataSensor4);
 
-//   SERIAL_ECHO("dataSensor5 ");
-//   SERIAL_ECHOLN(dataSensor5);
+//     SERIAL_ECHO("dataSensor5 ");
+//     SERIAL_ECHOLN(dataSensor5);
+//   }else{
+//     SERIAL_ECHOLN("Data sensor not found");
+//   }
 // }
 
 // void receiveDataSensor() {
-//   while(MYSERIAL2.available()){
-//     char inChar = (char)MYSERIAL2.read();
+//   while(MYSERIAL1.available()){
+//     char inChar = (char)MYSERIAL1.read();
 //     SERIAL_ECHOLN(inChar);
-//     MYSERIAL2.println(inChar);
+//     MYSERIAL1.println(inChar);
   
-//     if(headerFind == 0 && inChar == 'F'){ headerFind = 1; }
-//     else if(headerFind == 1 && inChar == 'F'){ headerFind = 2; }
-//     else if(headerFind == 2){      
+//     if (headerFind == 0 && inChar == 'F') { headerFind = 1; }
+//     else if (headerFind == 1 && inChar == 'F') { headerFind = 2; }
+//     else if (headerFind == 2) {
 //       dataRX[indexData] = (int)inChar;
 //       indexData++;
-//       if(indexData >= dataRXsum){ headerFind = indexData = 0; }
-//     }else { headerFind = indexData = 0; }
+//       if (indexData >= dataRXsum) { headerFind = indexData = 0; }
+//     } else { headerFind = indexData = 0; }
 //   }
 // }
 //### mysourcecode
@@ -1380,8 +1384,10 @@ void loop() {
     // receiveDataSensor();
     // processDataSensor();
 
-    // MYSERIAL2.println("Bismillahirrahmanirrahim new serial comm port");
-    // DELAY_US(1000);
+    SERIAL_ECHOLN("Bismillah");
+    DELAY_US(1000);
+    MYSERIAL0.println("Alhamdulillah");
+    DELAY_US(1000);
     //### mysourcecode
     
     #if ENABLED(SDSUPPORT)
