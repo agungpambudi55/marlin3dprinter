@@ -945,7 +945,7 @@ inline void tmc_standby_setup() {
  */
 void setup() {
   //### mysourcecode
-  // MYSERIAL1.begin(115200);
+  MYSERIAL1.begin(BAUDRATE);
   //### mysourcecode
   
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable
@@ -1386,8 +1386,8 @@ void loop() {
 
     SERIAL_ECHOLN("Bismillah");
     DELAY_US(1000);
-    MYSERIAL0.println("Alhamdulillah");
-    DELAY_US(1000);
+    // MYSERIAL1.println("Alhamdulillah");
+    // DELAY_US(1000);
     //### mysourcecode
     
     #if ENABLED(SDSUPPORT)

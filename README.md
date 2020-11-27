@@ -3,6 +3,12 @@
 Agung Pambudi - agungpambudi55 <agung.pambudi5595@gmail.com>
 
 ## The Four Week of November 2020
+RepRapDiscount FULL GRAPHIC Smart Controller (https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller) Configuration.h on line 2000
+```
+// LCD12864 Simulator
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+```
+
 Setup LCD on line 1440 (Marlin-2.0.x\Marlin\Configuration_adv.h)
 ```
 #define LCD_SERIAL_PORT 3
@@ -276,10 +282,13 @@ void loop() {
 }
 ```
 
+### BBT TFT70
+Setting Connection Baudrate 250000
+
 ### Link
 https://marlinfw.org
 https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3
-https://3dwork.io/en/complete-guide-skr-v1-4-and-tmc2209/
+https://3dwork.io/en/complete-guide-skr-v1-4-and-tmc2209
 https://github.com/bigtreetech/BIGTREETECH-TouchScreenHardware
 https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware
 
