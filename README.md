@@ -232,6 +232,13 @@ void loop() {
 ![Gambar][gambar-2-url]
 
 ## The Second Week of November 2020
+BTT SKR V1.4 Turbo
+![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO.jpg]
+![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO%20BACK.jpg]
+
+BTT SKR V1.3
+![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.3.jpg]
+
 ### Directory File
 ```
 Marlin-2.0.X
@@ -286,11 +293,11 @@ void loop() {
 Setting Connection Baudrate 250000
 
 ### Link
-https://marlinfw.org
-https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3
-https://3dwork.io/en/complete-guide-skr-v1-4-and-tmc2209
-https://github.com/bigtreetech/BIGTREETECH-TouchScreenHardware
-https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware
+* https://marlinfw.org
+* https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3
+* https://3dwork.io/en/complete-guide-skr-v1-4-and-tmc2209
+* https://github.com/bigtreetech/BIGTREETECH-TouchScreenHardware
+* https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware
 
 <!-- MARKDOWN LINKS -->
 [gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png

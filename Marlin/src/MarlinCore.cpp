@@ -1384,8 +1384,8 @@ void loop() {
     // receiveDataSensor();
     // processDataSensor();
 
-    SERIAL_ECHOLN("Bismillah");
-    DELAY_US(1000);
+    // SERIAL_ECHOLN("Bismillah");
+    // DELAY_US(1000);
     // MYSERIAL1.println("Alhamdulillah");
     // DELAY_US(1000);
     //### mysourcecode
