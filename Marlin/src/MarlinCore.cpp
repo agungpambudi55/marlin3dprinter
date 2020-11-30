@@ -945,7 +945,7 @@ inline void tmc_standby_setup() {
  */
 void setup() {
   //### mysourcecode
-  MYSERIAL1.begin(BAUDRATE);
+  // MYSERIAL1.begin(BAUDRATE);
   //### mysourcecode
   
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable

@@ -2,6 +2,10 @@
 ## Contributor 
 Agung Pambudi - agungpambudi55 <agung.pambudi5595@gmail.com>
 
+
+ * M221 - Set Flow Percentage: "M221 S<percent>"
+
+
 ## The Four Week of November 2020
 RepRapDiscount FULL GRAPHIC Smart Controller (https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller) Configuration.h on line 2000
 ```
@@ -233,11 +237,11 @@ void loop() {
 
 ## The Second Week of November 2020
 BTT SKR V1.4 Turbo
-![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO.jpg]
-![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO%20BACK.jpg]
+![Gambar][gambar-4-url]
+![Gambar][gambar-5-url]
 
 BTT SKR V1.3
-![Gambar][https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.3.jpg]
+![Gambar][gambar-6-url]
 
 ### Directory File
 ```
@@ -303,3 +307,6 @@ Setting Connection Baudrate 250000
 [gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
 [gambar-2-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/read%20write%20parsing%20packet.png
 [gambar-3-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/new%20serial%20comm%20port.png
+[gambar-4-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO.jpg
+[gambar-5-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO%20BACK.jpg
+[gambar-6-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.3.jpg
