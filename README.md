@@ -3,7 +3,7 @@
 Agung Pambudi - agungpambudi55 *agung.pambudi5595@gmail.com*
 
 ## The Second Week of December 2020
-### Resume G-Code
+### G-Code summary
 - https://github.com/MarlinFirmware/Marlin/issues/10549
 
 * For the technically-minded, G-code line endings are Unix Line Endings (\n), but will accept Windows Line Endings (\r\n), so you should not need to worry about converting between the two, but it is best practice to use Unix Line Endings where possible.
@@ -21,13 +21,14 @@ Agung Pambudi - agungpambudi55 *agung.pambudi5595@gmail.com*
 <<< ok
 ```
 
-### Board LPC1789 for Marlin
-* Add this declaration header function in file queue.h on private of class GCodeQueue
+### Create G-Code communication via I2C
+#### Board LPC1789 for Marlin
+* Add this header declaration function in queue.h file of private class GCodeQueue
 ```
 static void get_i2c_commands();
 ```
 
-* Add func get_i2c_commands() in file queue.cpp on func get_available_commands()
+* Add func get_i2c_commands() in queue.cpp file on func get_available_commands()
 ```
 void GCodeQueue::get_available_commands() {
   get_serial_commands();
@@ -38,7 +39,7 @@ void GCodeQueue::get_available_commands() {
 }
 ```
 
-* Add this func get_i2c_commands in file queue.cpp after func get_serial_commands()
+* Add this func get_i2c_commands() in queue.cpp file after func get_serial_commands()
 ```
 void GCodeQueue::get_i2c_commands() {
   static char serial_line_buffer[NUM_SERIAL][MAX_CMD_SIZE];
@@ -144,7 +145,7 @@ void GCodeQueue::get_i2c_commands() {
 }
 ```
 
-### Source code on other board
+#### Source code on another board
 ```
 #include <Wire.h>
 
@@ -205,7 +206,7 @@ Example serial output of a M261 request, echo:i2c-reply: from:99 bytes:5 data:he
 * Example G-Code for set Feedrate
 M221 - Set Flow Percentage: "M221 S<percent>"
 
-**Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board***
+**Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board**
 ```
 import serial.tools.list_ports
 import time
@@ -309,7 +310,7 @@ if __name__ == "__main__":
 ```
 
 ## The Four Week of November 2020
-- RepRapDiscount FULL GRAPHIC Smart Controller
+- Mode Marlin / RepRapDiscount FULL GRAPHIC Smart Controller
 Link : https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller 
 Uncomment this define, Configuration.h on line 2000
 ```
