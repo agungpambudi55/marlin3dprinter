@@ -1,10 +1,4 @@
 /**
- * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
- * Last Modified : 23 Nov 2020
- * Desc : Adding and editing source code to the Marlin Firmware
-*/
-
-/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -944,10 +938,7 @@ inline void tmc_standby_setup() {
  *    • Max7219
  */
 void setup() {
-  //### mysourcecode
-  // MYSERIAL1.begin(BAUDRATE);
-  //### mysourcecode
-  
+
   tmc_standby_setup();  // TMC Low Power Standby pins must be set early or they're not usable
 
   #if ENABLED(MARLIN_DEV_MODE)
@@ -1315,15 +1306,10 @@ void setup() {
  *    card, host, or by direct injection. The queue will continue to fill
  *    as long as idle() or manage_inactivity() are being called.
  */
-
 void loop() {
   do {
     idle();
 
-    //### mysourcecode
-
-    //### mysourcecode
-    
     #if ENABLED(SDSUPPORT)
       card.checkautostart();
       if (card.flag.abort_sd_printing) abortSDPrinting();

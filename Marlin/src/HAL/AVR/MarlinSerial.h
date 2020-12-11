@@ -1,10 +1,4 @@
 /**
- * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
- * Last Modified : 23 Nov 2020
- * Desc : Adding and editing source code to the Marlin Firmware
-*/
-
-/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -279,14 +273,10 @@
   extern MarlinSerial<MarlinSerialCfg<SERIAL_PORT>> customizedSerial1;
 
   #ifdef SERIAL_PORT_2
-    extern MarlinSerial<MarlinSerialCfg<SERIAL_PORT_2>> customizedSerial2;
-  #endif
 
-  //### mysourcecode
-  #ifdef SERIAL_PORT_3
-    extern MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>> customizedSerial3;
+    extern MarlinSerial<MarlinSerialCfg<SERIAL_PORT_2>> customizedSerial2;
+
   #endif
-  //### mysourcecode
 
 #endif // !USBCON
 

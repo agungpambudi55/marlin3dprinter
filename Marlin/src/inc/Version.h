@@ -1,10 +1,4 @@
 /**
- * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
- * Last Modified : 23 Nov 2020
- * Desc : Adding and editing source code to the Marlin Firmware
-*/
-
-/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -48,7 +42,7 @@
  * version was tagged.
  */
 #ifndef STRING_DISTRIBUTION_DATE
-  #define STRING_DISTRIBUTION_DATE "2020-11-01"
+  #define STRING_DISTRIBUTION_DATE "2020-10-15"
 #endif
 
 /**
@@ -79,7 +73,7 @@
  * Define a generic printer name to be output to the LCD after booting Marlin.
  */
 #ifndef MACHINE_NAME
-  #define MACHINE_NAME "WIDYA 3DCP"
+  #define MACHINE_NAME "3D Printer"
 #endif
 
 /**

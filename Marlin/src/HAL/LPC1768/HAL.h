@@ -1,10 +1,4 @@
 /**
- * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
- * Last Modified : 23 Nov 2020
- * Desc : Adding and editing source code to the Marlin Firmware
-*/
-
-/**
  * Marlin 3D Printer Firmware
  *
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
@@ -90,18 +84,6 @@ extern "C" volatile uint32_t _millis;
     #error "SERIAL_PORT_2 must be from -1 to 3. Please update your configuration."
   #endif
 #endif
-
-// mysourcecode
-#ifdef SERIAL_PORT_3
-  #if SERIAL_PORT_3 == -1
-    #define MYSERIAL2 UsbSerial
-  #elif WITHIN(SERIAL_PORT_3, 0, 3)
-    #define MYSERIAL2 MSERIAL(SERIAL_PORT_3)
-  #else
-    #error "SERIAL_PORT_3 must be from -1 to 3. Please update your configuration."
-  #endif
-#endif
-// mysourcecode
 
 #ifdef LCD_SERIAL_PORT
   #if LCD_SERIAL_PORT == -1

@@ -1,10 +1,4 @@
 /**
- * Author : Agung Pambudi / agungpambudi55 <agung.pambudi5595@gmail.com>
- * Last Modified : 23 Nov 2020
- * Desc : Adding and editing source code to the Marlin Firmware
-*/
-
-/**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  * Copyright (c) 2016 Bob Cousins bobcousins42@googlemail.com
@@ -101,18 +95,7 @@ typedef int8_t pin_t;
     #endif
     #define MYSERIAL1 customizedSerial2
   #endif
-
-//### mysourcecode
-  #ifdef SERIAL_PORT_3
-    #if !WITHIN(SERIAL_PORT_3, -1, 3)
-      #error "SERIAL_PORT_3 must be from -1 to 3. Please update your configuration."
-    #endif
-    #define MYSERIAL2 customizedSerial3
-  #endif
-//### mysourcecode
-
 #endif
-
 
 #ifdef LCD_SERIAL_PORT
   #if !WITHIN(LCD_SERIAL_PORT, -1, 3)

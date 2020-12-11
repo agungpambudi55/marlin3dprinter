@@ -7,7 +7,6 @@
             "name": "Win32",
             "includePath": [
                 "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin",
-                "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/libdeps/LPC1769/U8glib-HAL/src",
                 "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
                 "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/include",
                 "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/u8g",
@@ -22,7 +21,6 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin",
-                    "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/libdeps/LPC1769/U8glib-HAL/src",
                     "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
                     "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/include",
                     "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/u8g",
