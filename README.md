@@ -205,7 +205,7 @@ Example serial output of a M261 request, echo:i2c-reply: from:99 bytes:5 data:he
 * Example G-Code for set Feedrate
 M221 - Set Flow Percentage: "M221 S<percent>"
 
-**Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board
+**Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board***
 ```
 import serial.tools.list_ports
 import time
