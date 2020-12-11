@@ -207,7 +207,7 @@ Example serial output of a M261 request, echo:i2c-reply: from:99 bytes:5 data:he
 * Example G-Code for set Feedrate
 M221 - Set Flow Percentage: "M221 S<percent>"
 
-**2. Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board**
+**2. Create a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board**
 ```
 import serial.tools.list_ports
 import time
@@ -711,7 +711,8 @@ M33  - Get the longname version of a path. (Requires LONG_FILENAME_HOST_SUPPORT)
 M34  - Set SD Card sorting options. (Requires SDCARD_SORT_ALPHA)
 M42  - Change pin status via gcode: M42 P<pin> S<value>. LED pin assumed if P is omitted. (Requires DIRECT_PIN_CONTROL)
 M43  - Display pin status, watch pins for changes, watch endstops & toggle LED, Z servo probe test, toggle pins
-M48  - Measure Z Probe repeatability: M48 P<points> X<pos> Y<pos> V<level> E<engage> L<legs> S<chizoid>. (Requires Z_MIN_PROBE_REPEATABILITY_TEST)
+M48  - Measure Z Probe repeatability: M48 P<points> X<pos> Y<pos> V<level> E<engage> L<legs> S<chizoid>. 
+       (Requires Z_MIN_PROBE_REPEATABILITY_TEST)
 M73  - Set the progress percentage. (Requires LCD_SET_PROGRESS_MANUALLY)
 M75  - Start the print job timer.
 M76  - Pause the print job timer.
@@ -755,7 +756,8 @@ M140 - Set bed target temp. S<temp>
 M141 - Set heated chamber target temp. S<temp> (Requires a chamber heater)
 M145 - Set heatup values for materials on the LCD. H<hotend> B<bed> F<fan speed> for S<material> (0=PLA, 1=ABS)
 M149 - Set temperature units. (Requires TEMPERATURE_UNITS_SUPPORT)
-M150 - Set Status LED Color as R<red> U<green> B<blue> W<white> P<bright>. Values 0-255. (Requires BLINKM, RGB_LED, RGBW_LED, NEOPIXEL_LED, PCA9533, or PCA9632).
+M150 - Set Status LED Color as R<red> U<green> B<blue> W<white> P<bright>. Values 0-255. 
+       (Requires BLINKM, RGB_LED, RGBW_LED, NEOPIXEL_LED, PCA9533, or PCA9632).
 M155 - Auto-report temperatures with interval of S<seconds>. (Requires AUTO_REPORT_TEMPERATURES)
 M163 - Set a single proportion for a mixing extruder. (Requires MIXING_EXTRUDER)
 M164 - Commit the mix and save to a virtual tool (current, or as specified by 'S'). (Requires MIXING_EXTRUDER)
@@ -776,7 +778,7 @@ M206 - Set additional homing offset. (Disabled by NO_WORKSPACE_OFFSETS or DELTA)
 M207 - Set Retract Length: S<length>, Feedrate: F<units/min>, and Z lift: Z<distance>. (Requires FWRETRACT)
 M208 - Set Recover (unretract) Additional (!) Length: S<length> and Feedrate: F<units/min>. (Requires FWRETRACT)
 M209 - Turn Automatic Retract Detection on/off: S<0|1> (For slicers that don't support G10/11). (Requires FWRETRACT_AUTORETRACT)
-          Every normal extrude-only move will be classified as retract depending on the direction.
+       Every normal extrude-only move will be classified as retract depending on the direction.
 M211 - Enable, Disable, and/or Report software endstops: S<0|1> (Requires MIN_SOFTWARE_ENDSTOPS or MAX_SOFTWARE_ENDSTOPS)
 M217 - Set filament swap parameters: "M217 S<length> P<feedrate> R<feedrate>". (Requires SINGLENOZZLE)
 M218 - Set/get a tool offset: "M218 T<index> X<offset> Y<offset>". (Requires 2 or more extruders)
@@ -814,7 +816,8 @@ M410 - Quickstop. Abort all planned moves.
 M412 - Enable / Disable Filament Runout Detection. (Requires FILAMENT_RUNOUT_SENSOR)
 M413 - Enable / Disable Power-Loss Recovery. (Requires POWER_LOSS_RECOVERY)
 M420 - Enable/Disable Leveling (with current values) S1=enable S0=disable (Requires MESH_BED_LEVELING or ABL)
-M421 - Set a single Z coordinate in the Mesh Leveling grid. X<units> Y<units> Z<units> (Requires MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, or AUTO_BED_LEVELING_UBL)
+M421 - Set a single Z coordinate in the Mesh Leveling grid. X<units> Y<units> Z<units> 
+       (Requires MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, or AUTO_BED_LEVELING_UBL)
 M422 - Set Z Stepper automatic alignment position using probe. X<units> Y<units> A<axis> (Requires Z_STEPPER_AUTO_ALIGN)
 M425 - Enable/Disable and tune backlash correction. (Requires BACKLASH_COMPENSATION and BACKLASH_GCODE)
 M428 - Set the home_offset based on the current_position. Nearest edge applies. (Disabled by NO_WORKSPACE_OFFSETS or DELTA)
@@ -834,7 +837,8 @@ M569 - Enable stealthChop on an axis. (Requires at least one _DRIVER_TYPE to be 
 M600 - Pause for filament change: "M600 X<pos> Y<pos> Z<raise> E<first_retract> L<later_retract>". (Requires ADVANCED_PAUSE_FEATURE)
 M603 - Configure filament change: "M603 T<tool> U<unload_length> L<load_length>". (Requires ADVANCED_PAUSE_FEATURE)
 M605 - Set Dual X-Carriage movement mode: "M605 S<mode> [X<x_offset>] [R<temp_offset>]". (Requires DUAL_X_CARRIAGE)
-M665 - Set delta configurations: "M665 H<delta height> L<diagonal rod> R<delta radius> S<segments/s> B<calibration radius> X<Alpha angle trim> Y<Beta angle trim> Z<Gamma angle trim> (Requires DELTA)
+M665 - Set delta configurations: "M665 H<delta height> L<diagonal rod> R<delta radius> S<segments/s> B<calibration radius> 
+       X<Alpha angle trim> Y<Beta angle trim> Z<Gamma angle trim> (Requires DELTA)
 M666 - Set/get offsets for delta (Requires DELTA) or dual endstops. (Requires [XYZ]_DUAL_ENDSTOPS)
 M672 - Set/Reset Duet Smart Effector's sensitivity. (Requires DUET_SMART_EFFECTOR and SMART_EFFECTOR_MOD_PIN)
 M701 - Load filament (Requires FILAMENT_LOAD_UNLOAD_GCODES)
@@ -856,7 +860,8 @@ M871 - Print/reset/clear first layer temperature offset values. (Requires PROBE_
 M192 - Wait for probe temp (Requires PROBE_TEMP_COMPENSATION)
 M876 - Handle Prompt Response. (Requires HOST_PROMPT_SUPPORT and not EMERGENCY_PARSER)
 M900 - Get or Set Linear Advance K-factor. (Requires LIN_ADVANCE)
-M906 - Set or get motor current in milliamps using axis codes X, Y, Z, E. Report values if no axis codes given. (Requires at least one _DRIVER_TYPE defined as TMC2130/2160/5130/5160/2208/2209/2660 or L6470)
+M906 - Set or get motor current in milliamps using axis codes X, Y, Z, E. Report values if no axis codes given. 
+       (Requires at least one _DRIVER_TYPE defined as TMC2130/2160/5130/5160/2208/2209/2660 or L6470)
 M907 - Set digital trimpot motor current using axis codes. (Requires a board with digital trimpots)
 M908 - Control digital trimpot directly. (Requires HAS_MOTOR_CURRENT_DAC or DIGIPOTSS_PIN)
 M909 - Print digipot/DAC current value. (Requires HAS_MOTOR_CURRENT_DAC)
@@ -870,13 +875,13 @@ M917 - L6470 tuning: Find minimum current thresholds. (Requires at least one _DR
 M918 - L6470 tuning: Increase speed until max or error. (Requires at least one _DRIVER_TYPE L6470)
 M951 - Set Magnetic Parking Extruder parameters. (Requires MAGNETIC_PARKING_EXTRUDER)
 M7219 - Control Max7219 Matrix LEDs. (Requires MAX7219_GCODE)
- *
+*
 M360 - SCARA calibration: Move to cal-position ThetaA (0 deg calibration)
 M361 - SCARA calibration: Move to cal-position ThetaB (90 deg calibration - steps per degree)
 M362 - SCARA calibration: Move to cal-position PsiA (0 deg calibration)
 M363 - SCARA calibration: Move to cal-position PsiB (90 deg calibration - steps per degree)
 M364 - SCARA calibration: Move to cal-position PSIC (90 deg to Theta calibration position)
- *
+*
 ************ Custom codes - This can change to suit future G-code regulations
 G425 - Calibrate using a conductive object. (Requires CALIBRATION_GCODE)
 M928 - Start SD logging: "M928 filename.gco". Stop with M29. (Requires SDSUPPORT)
