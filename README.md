@@ -64,8 +64,8 @@ void GCodeQueue::get_i2c_commands() {
 
       char* command = serial_line_buffer[i];
 
-      while (*command == ' ') command++;                   // Skip leading spaces
-      char *npos = (*command == 'N') ? command : nullptr;  // Require the N parameter to start the line
+      while (*command == ' ') command++;         // Skip leading spaces
+      char *npos=(*command=='N')?command:nullptr;// Require the N parameter to start the line
 
       if (npos) {
 
@@ -110,7 +110,7 @@ void GCodeQueue::get_i2c_commands() {
             #if ENABLED(BEZIER_CURVE_SUPPORT)
               case 5:
             #endif
-              PORT_REDIRECT(i);                      // Reply to the serial port that sent the command
+              PORT_REDIRECT(i); // Reply to the serial port that sent the command
               SERIAL_ECHOLNPGM(STR_ERR_STOPPED);
               LCD_MESSAGEPGM(MSG_STOPPED);
               break;
@@ -167,7 +167,8 @@ void requestEvent(const uint8_t bytes) {
 ```
 
 ## The First Week of December 2020
-**Create communication I2C / TWI BUS**
+**1. Create communication I2C / TWI BUS**
+
 Enabling this will allow you to send and receive I2C data from slave devices on the bus.
 
 * Configuration_adv.h on line 2861
@@ -206,7 +207,7 @@ Example serial output of a M261 request, echo:i2c-reply: from:99 bytes:5 data:he
 * Example G-Code for set Feedrate
 M221 - Set Flow Percentage: "M221 S<percent>"
 
-**Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board**
+**2. Crate a G-Code test program from the sensor board to the raspberry pi board then to the Marlin LPC1769 board**
 ```
 import serial.tools.list_ports
 import time
