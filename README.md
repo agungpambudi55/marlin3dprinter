@@ -8,6 +8,8 @@ Edit file TFT\src\User\Variants\pin_TFT70_V3_0.h on line 61
 ```
 #define SERIAL_PORT   _USART2  // default usart port for marlin
 #define SERIAL_PORT_2 _USART3  // usart port for another board
+#define SERIAL_PORT_3 _USART1  // none
+#define SERIAL_PORT_4 _UART4   // usart port for another board
 ```
 
 Finally build the firmware in the folder with name U2DFWTFT70V3.0, to update the BTT TFT70 v3.0 firmware with copying the files in the U2C folder to the SD card, then press the reset button.
