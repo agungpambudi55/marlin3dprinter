@@ -2,11 +2,25 @@
 ## Contributor
 Agung Pambudi - agungpambudi55 *agung.pambudi5595@gmail.com*
 
+## The Third Week of December 2020
+### Setup UART3 comm BTT TFT70 V3.0 with another board
+Edit file TFT\src\User\Variants\pin_TFT70_V3_0.h on line 61
+```
+#define SERIAL_PORT   _USART2  // default usart port for marlin
+#define SERIAL_PORT_2 _USART3  // usart port for another board
+```
+
+Finally build the firmware in the folder with name U2DFWTFT70V3.0, to update the BTT TFT70 v3.0 firmware with copying the files in the U2C folder to the SD card, then press the reset button.
+
+### Setup 3DPrint CentraLab
+- Use configuration.
+
 ## The Second Week of December 2020
 ### G-Code summary
-- https://github.com/MarlinFirmware/Marlin/issues/10549
-
-* For the technically-minded, G-code line endings are Unix Line Endings (\n), but will accept Windows Line Endings (\r\n), so you should not need to worry about converting between the two, but it is best practice to use Unix Line Endings where possible.
+- G-Code in Marlin provides 4 commands to a buffer of length 96
+- Read every 4 commands then save it in the queue buffer, run per command until it's finished then read the command again
+- RTOS under Marlin : https://github.com/MarlinFirmware/Marlin/issues/10549
+- For the technically-minded, G-code line endings are Unix Line Endings (\n), but will accept Windows Line Endings (\r\n), so you should not need to worry about converting between the two, but it is best practice to use Unix Line Endings where possible.
 
 * Example of a communication error with resend request
 `>>>` are lines sent from the host to the RepRap machine, `<<<` are lines sent from the RepRap machine to the host.
@@ -163,6 +177,36 @@ void loop() {
 // this function is registered as an event, see setup()
 void requestEvent(const uint8_t bytes) {
   Wire.write("M114\n"); // respond with message of 6 bytesx
+}
+```
+
+### Send G-Code from another board via UART BTT TFT70
+```
+long interval = 5000;
+long prevMillis = 0;
+
+void setup() {
+  Serial.begin(115200);
+  Serial3.begin(115200);
+}
+
+void loop() {
+  // write command to marlin
+  unsigned long currentMillis = millis();
+ 
+  if(currentMillis - prevMillis > interval) {
+    prevMillis = currentMillis;
+    
+    Serial3.print("M114");
+    Serial3.write(0x0A);
+    Serial.println("Send G-Code M114");
+  }
+ 
+  // read respon from marlin
+  while(Serial3.available()){
+    char inChar = (char)Serial3.read();
+    Serial.print(inChar);
+  }
 }
 ```
 
