@@ -13,7 +13,26 @@ Edit file TFT\src\User\Variants\pin_TFT70_V3_0.h on line 61
 Finally build the firmware in the folder with name U2DFWTFT70V3.0, to update the BTT TFT70 v3.0 firmware with copying the files in the U2C folder to the SD card, then press the reset button.
 
 ### Setup 3DPrint CentraLab
-- Use configuration.
+- Replace the configuration files in the Marlin folder with the configuration files in the folder `Marlin-2.0.x\config\examples\Creality\Ender-5\BigTreeTech SKR 1.4 Turbo (TMC2209)`.
+- Setup driver motor, file configuration.h on line 681, uncomment and change to DRV8825, 
+```
+#define X_DRIVER_TYPE  DRV8825
+#define Y_DRIVER_TYPE  DRV8825
+#define Z_DRIVER_TYPE  DRV8825
+//#define X2_DRIVER_TYPE A4988
+//#define Y2_DRIVER_TYPE A4988
+#define Z2_DRIVER_TYPE DRV8825
+//#define Z3_DRIVER_TYPE A4988
+//#define Z4_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE DRV8825
+//#define E1_DRIVER_TYPE A4988
+//#define E2_DRIVER_TYPE A4988
+//#define E3_DRIVER_TYPE A4988
+//#define E4_DRIVER_TYPE A4988
+//#define E5_DRIVER_TYPE A4988
+//#define E6_DRIVER_TYPE A4988
+//#define E7_DRIVER_TYPE A4988
+```
 
 ## The Second Week of December 2020
 ### G-Code summary
