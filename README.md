@@ -36,6 +36,104 @@ Finally build the firmware in the folder with name U2DFWTFT70V3.0, to update the
 //#define E7_DRIVER_TYPE A4988
 ```
 
+- Setup bed, file configuration.h on line 426, change to 1 
+```
+#define TEMP_SENSOR_BED 1
+```
+
+- Author info of this build printed to the host during boot and M115, file configuration.h on line 73
+```
+#define STRING_CONFIG_H_AUTHOR "(Agung Pambudi, Custom Config)"
+```
+
+- Show the bitmap in Marlin/_Bootscreen.h on startup and show the bitmap in Marlin/_Statusscreen.h on the status screen, file configuration.h on line 90
+```
+#define SHOW_CUSTOM_BOOTSCREEN
+// #define CUSTOM_STATUS_SCREEN_IMAGE
+```
+
+- Name displayed in the LCD "Ready" message and Info menu, file configuration.h on line 133
+``
+#define CUSTOM_MACHINE_NAME "WIDYA 3DCP"
+```
+
+- Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc. file configuration.h on line 146
+```
+#define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
+```
+
+- Custom bootscreen, https://marlinfw.org/tools/u8glib/converter.html, path file is Marlin/_Bootscreen.h
+
+- Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way, file configuration.h on line 1088
+```
+#define INVERT_X_DIR false
+#define INVERT_Y_DIR true
+#define INVERT_Z_DIR false
+```
+
+- The size of the print bed, file configuration.h on line 1124
+```
+#define X_BED_SIZE 200
+#define Y_BED_SIZE 200
+```
+
+- Travel limits (mm) after homing, corresponding to endstop positions, file configuration.h on line 1128
+```
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
+#define Z_MIN_POS 0
+#define X_MAX_POS X_BED_SIZE
+#define Y_MAX_POS Y_BED_SIZE
+#define Z_MAX_POS 200
+```
+
+- Bed Leveling, file configuration.h on line 1202
+```
+/**
+ * Choose one of the options below to enable G29 Bed Leveling. The parameters
+ * and behavior of G29 will change depending on your selection.
+ *
+ *  If using a Probe for Z Homing, enable Z_SAFE_HOMING also!
+ *
+ * - AUTO_BED_LEVELING_3POINT
+ *   Probe 3 arbitrary points on the bed (that aren't collinear)
+ *   You specify the XY coordinates of all 3 points.
+ *   The result is a single tilted plane. Best for a flat bed.
+ *
+ * - AUTO_BED_LEVELING_LINEAR
+ *   Probe several points in a grid.
+ *   You specify the rectangle and the density of sample points.
+ *   The result is a single tilted plane. Best for a flat bed.
+ *
+ * - AUTO_BED_LEVELING_BILINEAR
+ *   Probe several points in a grid.
+ *   You specify the rectangle and the density of sample points.
+ *   The result is a mesh, best for large or uneven beds.
+ *
+ * - AUTO_BED_LEVELING_UBL (Unified Bed Leveling)
+ *   A comprehensive bed leveling system combining the features and benefits
+ *   of other systems. UBL also includes integrated Mesh Generation, Mesh
+ *   Validation and Mesh Editing systems.
+ *
+ * - MESH_BED_LEVELING
+ *   Probe a grid manually
+ *   The result is a mesh, suitable for large or uneven beds. (See BILINEAR.)
+ *   For machines without a probe, Mesh Bed Leveling provides a method to perform
+ *   leveling in steps so you can manually adjust the Z height at each grid-point.
+ *   With an LCD controller the process is guided step-by-step.
+ */
+//#define AUTO_BED_LEVELING_3POINT
+//#define AUTO_BED_LEVELING_LINEAR
+//#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_UBL
+//#define MESH_BED_LEVELING
+```
+
+-
+```
+#define SPEAKER
+```
+
 ## The Second Week of December 2020
 ### G-Code summary
 - G-Code in Marlin provides 4 commands to a buffer of length 96
