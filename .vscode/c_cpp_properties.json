@@ -1,36 +1,38 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
-            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
-        },
-        {
-            "name": "Win32",
+            "name": "PlatformIO",
             "includePath": [
-                "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin",
-                "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/libdeps/LPC1769/U8glib-HAL/src",
-                "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
-                "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/include",
-                "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/u8g",
-                "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/cores/arduino",
-                "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/include",
-                "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/lib",
-                "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/lpc176x",
-                "C:/Users/widya/.platformio/packages/tool-unity",
+                "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin",
+                "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/.pio/libdeps/LPC1769/U8glib-HAL/src",
+                "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
+                "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin/src/HAL/LPC1768/include",
+                "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin/src/HAL/LPC1768/u8g",
+                "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/cores/arduino",
+                "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/include",
+                "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/lib",
+                "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/lpc176x",
+                "C:/Users/Singo Barong/.platformio/packages/tool-unity",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin",
-                    "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/libdeps/LPC1769/U8glib-HAL/src",
-                    "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
-                    "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/include",
-                    "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/Marlin/src/HAL/LPC1768/u8g",
-                    "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/cores/arduino",
-                    "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/include",
-                    "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/lib",
-                    "C:/Users/widya/.platformio/packages/framework-arduino-lpc176x/system/lpc176x",
-                    "C:/Users/widya/.platformio/packages/tool-unity",
+                    "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin",
+                    "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/.pio/libdeps/LPC1769/U8glib-HAL/src",
+                    "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/libraries/Servo/src",
+                    "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin/src/HAL/LPC1768/include",
+                    "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/Marlin/src/HAL/LPC1768/u8g",
+                    "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/cores/arduino",
+                    "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/include",
+                    "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/CMSIS/lib",
+                    "C:/Users/Singo Barong/.platformio/packages/framework-arduino-lpc176x/system/lpc176x",
+                    "C:/Users/Singo Barong/.platformio/packages/tool-unity",
                     ""
                 ]
             },
@@ -41,16 +43,15 @@
                 "MCU_LPC1769",
                 "PIO_PLATFORM_VERSION=1003UL",
                 "PIO_FRAMEWORK_VERSION=2005UL",
-                "PLATFORMIO=50003",
+                "PLATFORMIO=50004",
                 "__MARLIN_FIRMWARE__",
                 "U8G_HAL_LINKS",
                 "ARDUINO_ARCH_LPC176X",
                 "ARDUINOLPC=10805",
                 ""
             ],
-            "intelliSenseMode": "gcc-x64",
             "cppStandard": "c++17",
-            "compilerPath": "C:/Users/widya/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe",
+            "compilerPath": "C:/Users/Singo Barong/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe",
             "compilerArgs": [
                 "-mthumb",
                 "-mcpu=cortex-m3",

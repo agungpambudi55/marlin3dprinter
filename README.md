@@ -457,13 +457,13 @@ Uncomment this define, Configuration.h on line 2000
 
 - Machine name, uncomment and write name between "" on line 146 (Marlin-2.0.x\Marlin\Configuration.h)
 ```
-#define CUSTOM_MACHINE_NAME "WIDYA 3DCP"
+#define CUSTOM_MACHINE_NAME "3D Printer"
 ```
 
 - Machine name on line 75 (Marlin-2.0.x\Marlin\src\inc\Version.h)
 ```
 #ifndef MACHINE_NAME
-  #define MACHINE_NAME "WIDYA 3DCP"
+  #define MACHINE_NAME "3D Printer"
 #endif
 ```
 
@@ -1041,9 +1041,9 @@ T0-T3 - Select an extruder (tool) by index: "T<n> F<units/min>"
 * https://linuxcnc.org/docs/html/gcode.html
 
 <!-- MARKDOWN LINKS -->
-[gambar-1-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
-[gambar-2-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/read%20write%20parsing%20packet.png
-[gambar-3-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/new%20serial%20comm%20port.png
-[gambar-4-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO.jpg
-[gambar-5-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.4%20TURBO%20BACK.jpg
-[gambar-6-url]: https://gitlab.com/widyarobotics/3dcp/research-marlin/-/raw/master/screenshoot/BTT%20SKR%20V1.3.jpg
+[gambar-1-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/parsing%20read%20write%20ser0%20ser1.png
+[gambar-2-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/read%20write%20parsing%20packet.png
+[gambar-3-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/new%20serial%20comm%20port.png
+[gambar-4-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/BTT%20SKR%20V1.4%20TURBO.jpg
+[gambar-5-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/BTT%20SKR%20V1.4%20TURBO%20BACK.jpg
+[gambar-6-url]: https://raw.githubusercontent.com/agungpambudi55/marlin3dprinter/master/screenshoot/BTT%20SKR%20V1.3.jpg

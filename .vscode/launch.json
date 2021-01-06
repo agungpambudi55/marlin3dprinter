@@ -12,10 +12,10 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/build/LPC1769/firmware.elf",
+            "executable": "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/.pio/build/LPC1769/firmware.elf",
             "projectEnvName": "LPC1769",
-            "toolchainBinDir": "C:/Users/widya/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "svdPath": "C:/Users/widya/.platformio/platforms/nxplpc-arduino-lpc176x/misc/svd/LPC176x5x_v0.2.svd",
+            "toolchainBinDir": "C:/Users/Singo Barong/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/Singo Barong/.platformio/platforms/nxplpc-arduino-lpc176x/misc/svd/LPC176x5x_v0.2.svd",
             "preLaunchTask": {
                 "type": "PlatformIO",
                 "task": "Pre-Debug (LPC1769)"
@@ -26,10 +26,10 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "c:/Users/widya/Documents/3DCP/Marlin-2.0.x/.pio/build/LPC1769/firmware.elf",
+            "executable": "C:/Users/Singo Barong/Documents/MyWorkspace/3DCP/marlin3dprinter/.pio/build/LPC1769/firmware.elf",
             "projectEnvName": "LPC1769",
-            "toolchainBinDir": "C:/Users/widya/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "svdPath": "C:/Users/widya/.platformio/platforms/nxplpc-arduino-lpc176x/misc/svd/LPC176x5x_v0.2.svd",
+            "toolchainBinDir": "C:/Users/Singo Barong/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/Singo Barong/.platformio/platforms/nxplpc-arduino-lpc176x/misc/svd/LPC176x5x_v0.2.svd",
             "internalConsoleOptions": "openOnSessionStart"
         }
     ]
